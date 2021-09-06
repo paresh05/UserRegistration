@@ -115,12 +115,14 @@ public class UserRegistration {
 	
 	/**
 	 * This Function checks and prints if the Password entered is valid or not
+	 * The rule-1 for a valid password is it should have minimum of 8 characters
+	 * The rule-2 for a valid password is it should have at least 1 upper case character
 	 * @param password This parameter takes the string input from the user 
 	 */
 	
 	public static void password() {
 
-		String passwordRegex = ".{8,}";
+		String passwordRegex = "((?=.*[A-Z]).{8,})";
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the Password");
 		String password = sc.nextLine();
@@ -144,10 +146,7 @@ public class UserRegistration {
 	public static void main(String[] args) {
 
 		System.out.println("Welcome to User Registration Program");
-		//firstName();
-		//lastName();
-		//email();
-		//mobileNumber();
+		
 		password();
 
 	}
