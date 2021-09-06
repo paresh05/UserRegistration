@@ -114,6 +114,31 @@ public class UserRegistration {
 	}
 	
 	/**
+	 * This Function checks and prints if the Password entered is valid or not
+	 * @param password This parameter takes the string input from the user 
+	 */
+	
+	public static void password() {
+
+		String passwordRegex = ".{8,}";
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the Password");
+		String password = sc.nextLine();
+
+		Pattern pt = Pattern.compile(passwordRegex);
+		Matcher mt = pt.matcher(password);
+
+		boolean result = mt.matches();
+
+		if (result)
+			System.out.println("Valid Password");
+		else
+			System.out.println("Invalid Password");
+
+		sc.close();
+	}
+	
+	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -122,7 +147,8 @@ public class UserRegistration {
 		//firstName();
 		//lastName();
 		//email();
-		mobileNumber();
+		//mobileNumber();
+		password();
 
 	}
 
