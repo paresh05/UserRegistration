@@ -19,7 +19,7 @@ public class UserRegistration {
 	 */
 	public static void firstName() {
 
-		String firstNameRegex = "^[A-Z].{2,}";
+		String firstNameRegex = "^[A-Z]{1}[a-z]{2,}";
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the First Name");
 		String firstName = sc.nextLine();
@@ -43,7 +43,7 @@ public class UserRegistration {
 	
 	public static void lastName() {
 
-		String lastNameRegex = "^[A-Z].{2,}";
+		String lastNameRegex = "^[A-Z]{1}[a-z]{2,}";
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the Last Name");
 		String lastName = sc.nextLine();
@@ -61,14 +61,41 @@ public class UserRegistration {
 		sc.close();
 	}
 	
+	
+	/**
+	 * This Function checks and prints if the email entered is valid or not
+	 * @param email This parameter takes the string input from the user 
+	 */
+	
+	public static void email() {
+
+		String emailRegex = "[a-z0-9]*(.[a-z0-9]*)@[a-z0-9]*.[a-z]*.[a-z]*$";
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the email");
+		String email = sc.nextLine();
+
+		Pattern pt = Pattern.compile(emailRegex);
+		Matcher mt = pt.matcher(email);
+
+		boolean result = mt.matches();
+
+		if (result)
+			System.out.println("Valid email");
+		else
+			System.out.println("Invalid email");
+
+		sc.close();
+	}
+	
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 
 		System.out.println("Welcome to User Registration Program");
-		firstName();
-		lastName();
+		//firstName();
+		//lastName();
+		email();
 
 	}
 
