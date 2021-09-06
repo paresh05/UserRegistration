@@ -87,6 +87,32 @@ public class UserRegistration {
 		sc.close();
 	}
 	
+	
+	/**
+	 * This Function checks and prints if the Mobile Number entered is valid or not
+	 * @param mobileNumber This parameter takes the string input from the user 
+	 */
+	
+	public static void mobileNumber() {
+
+		String mobileNumberRegex = "^[0-9]{2}\s[0-9]{10}";
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the Mobile Number");
+		String mobileNumber = sc.nextLine();
+
+		Pattern pt = Pattern.compile(mobileNumberRegex);
+		Matcher mt = pt.matcher(mobileNumber);
+
+		boolean result = mt.matches();
+
+		if (result)
+			System.out.println("Valid Mobile Number");
+		else
+			System.out.println("Invalid Mobile Number");
+
+		sc.close();
+	}
+	
 	/**
 	 * @param args
 	 */
@@ -95,7 +121,8 @@ public class UserRegistration {
 		System.out.println("Welcome to User Registration Program");
 		//firstName();
 		//lastName();
-		email();
+		//email();
+		mobileNumber();
 
 	}
 
