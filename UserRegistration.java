@@ -67,12 +67,12 @@ public class UserRegistration {
 	 * @param email This parameter takes the string input from the user 
 	 */
 	
-	public static void email() {
+	public static void email(String email) {
 
-		String emailRegex = "[a-z0-9]*(.[a-z0-9]*)@[a-z0-9]*.[a-z]*.[a-z]*$";
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter the email");
-		String email = sc.nextLine();
+		String emailRegex = "[a-z0-9]+(.[a-z0-9]+)@[a-z0-9]+.[a-z]*.[a-z]*$";
+		//Scanner sc = new Scanner(System.in);
+		//System.out.println("Enter the email");
+		//String email = sc.nextLine();
 
 		Pattern pt = Pattern.compile(emailRegex);
 		Matcher mt = pt.matcher(email);
@@ -84,7 +84,7 @@ public class UserRegistration {
 		else
 			System.out.println("Invalid email");
 
-		sc.close();
+		//sc.close();
 	}
 	
 	
@@ -142,6 +142,7 @@ public class UserRegistration {
 		sc.close();
 	}
 	
+	
 	/**
 	 * @param args
 	 */
@@ -149,8 +150,30 @@ public class UserRegistration {
 
 		System.out.println("Welcome to User Registration Program");
 		
-		password();
-
+		//Valid Conditions from the email sample
+		System.out.println("Valid Conditions");
+		email("abc@yahoo.com");
+		email("abc-100@yahoo.com");
+		email("abc.100@yahoo.com");
+		email("abc111@abc.com");
+		email("abc-100@abc.net");
+		email("abc.100@abc.com.au");
+		email("abc@1.com");
+		email("abc@gmail.com.com");
+		email("abc+100@gmail.com");
+		
+		//Invalid Conditions from the email sample
+		System.out.println("Invalid Conditions");
+		email("abc");
+		email("bc@.com.my");
+		email("abc123@.com");
+		email("abc123@.com.com ");
+		email(".abc@abc.com");
+		email("abc@gmail.com.1a");
+		email("abc@%*.com");
+		email("abc.@gmail.com");
+		email("abc@gmail.com.aa.au ");
+		
 	}
 
 }
