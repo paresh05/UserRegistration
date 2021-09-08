@@ -3,7 +3,6 @@
  */
 package com.bridgelabzday22;
 
-import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -17,23 +16,16 @@ public class UserRegistration {
 	 * This Function checks and prints if the first name entered is valid or not
 	 * @param firtsName This parameter takes the string input from the user 
 	 */
-	public static void firstName() {
+	public static boolean firstName(String firstName) {
 
 		String firstNameRegex = "^[A-Z]{1}[a-z]{2,}";
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter the First Name");
-		String firstName = sc.nextLine();
-
+		
 		Pattern pt = Pattern.compile(firstNameRegex);
 		Matcher mt = pt.matcher(firstName);
 
 		boolean result = mt.matches();
 
-		if (result)
-			System.out.println("Valid First Name");
-		else
-			System.out.println("Invalid First Name");
-
+		return result;
 	}
 	
 	/**
@@ -41,24 +33,16 @@ public class UserRegistration {
 	 * @param lastName This parameter takes the string input from the user 
 	 */
 	
-	public static void lastName() {
+	public static boolean lastName(String lastName) {
 
 		String lastNameRegex = "^[A-Z]{1}[a-z]{2,}";
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter the Last Name");
-		String lastName = sc.nextLine();
 
 		Pattern pt = Pattern.compile(lastNameRegex);
 		Matcher mt = pt.matcher(lastName);
 
 		boolean result = mt.matches();
 
-		if (result)
-			System.out.println("Valid Last Name");
-		else
-			System.out.println("Invalid Last Name");
-
-		sc.close();
+		return result;
 	}
 	
 	
@@ -67,24 +51,16 @@ public class UserRegistration {
 	 * @param email This parameter takes the string input from the user 
 	 */
 	
-	public static void email(String email) {
+	public static boolean email(String email) {
 
 		String emailRegex = "[a-z0-9]+(.[a-z0-9]+)@[a-z0-9]+.[a-z]*.[a-z]*$";
-		//Scanner sc = new Scanner(System.in);
-		//System.out.println("Enter the email");
-		//String email = sc.nextLine();
-
+		
 		Pattern pt = Pattern.compile(emailRegex);
 		Matcher mt = pt.matcher(email);
 
 		boolean result = mt.matches();
 
-		if (result)
-			System.out.println("Valid email");
-		else
-			System.out.println("Invalid email");
-
-		//sc.close();
+		return result;
 	}
 	
 	
@@ -93,24 +69,16 @@ public class UserRegistration {
 	 * @param mobileNumber This parameter takes the string input from the user 
 	 */
 	
-	public static void mobileNumber() {
+	public static boolean mobileNumber(String mobileNumber) {
 
 		String mobileNumberRegex = "^[0-9]{2}\s[0-9]{10}";
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter the Mobile Number");
-		String mobileNumber = sc.nextLine();
 
 		Pattern pt = Pattern.compile(mobileNumberRegex);
 		Matcher mt = pt.matcher(mobileNumber);
 
 		boolean result = mt.matches();
-
-		if (result)
-			System.out.println("Valid Mobile Number");
-		else
-			System.out.println("Invalid Mobile Number");
-
-		sc.close();
+		
+		return result;
 	}
 	
 	/**
@@ -122,26 +90,17 @@ public class UserRegistration {
 	 * @param password This parameter takes the string input from the user 
 	 */
 	
-	public static void password() {
+	public static boolean password(String password) {
 
 		String passwordRegex = "((?=.*\\d)(?=.*[A-Z])(?=.*[$&+,:;=?@#|'<>.^*()%!-]).{8,})";
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter the Password");
-		String password = sc.nextLine();
 
 		Pattern pt = Pattern.compile(passwordRegex);
 		Matcher mt = pt.matcher(password);
 
 		boolean result = mt.matches();
 
-		if (result)
-			System.out.println("Valid Password");
-		else
-			System.out.println("Invalid Password");
-
-		sc.close();
+		return result;
 	}
-	
 	
 	/**
 	 * @param args
@@ -149,30 +108,6 @@ public class UserRegistration {
 	public static void main(String[] args) {
 
 		System.out.println("Welcome to User Registration Program");
-		
-		//Valid Conditions from the email sample
-		System.out.println("Valid Conditions");
-		email("abc@yahoo.com");
-		email("abc-100@yahoo.com");
-		email("abc.100@yahoo.com");
-		email("abc111@abc.com");
-		email("abc-100@abc.net");
-		email("abc.100@abc.com.au");
-		email("abc@1.com");
-		email("abc@gmail.com.com");
-		email("abc+100@gmail.com");
-		
-		//Invalid Conditions from the email sample
-		System.out.println("Invalid Conditions");
-		email("abc");
-		email("bc@.com.my");
-		email("abc123@.com");
-		email("abc123@.com.com ");
-		email(".abc@abc.com");
-		email("abc@gmail.com.1a");
-		email("abc@%*.com");
-		email("abc.@gmail.com");
-		email("abc@gmail.com.aa.au ");
 		
 	}
 
