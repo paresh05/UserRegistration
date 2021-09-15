@@ -3,7 +3,8 @@
  */
 package com.bridgelabzday22;
 
-import java.util.regex.Matcher;
+import java.util.Scanner;
+import java.util.function.Predicate;
 import java.util.regex.Pattern;
 
 /**
@@ -15,94 +16,70 @@ public class UserRegistration {
 	/**
 	 * This Function checks and prints if the first name entered is valid or not
 	 * @param firtsName This parameter takes the string input from the user 
-	 * @throws UserRegistrationException 
 	 */
-	public static boolean firstName(String firstName) throws UserRegistrationException {
+	public static void firstName(){
 
 		String firstNameRegex = "^[A-Z]{1}[a-z]{2,}";
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the First Name");
+		String firstName = sc.nextLine();
 		
-		Pattern pt = Pattern.compile(firstNameRegex);
-		Matcher mt = pt.matcher(firstName);
+		Predicate<String> firstNameFilter = Pattern.compile(firstNameRegex).asMatchPredicate();
+		System.out.println(firstNameFilter.test(firstName));
 
-		boolean result = mt.matches();
-		
-		if(result == false)
-		{
-			throw new UserRegistrationException("Please Enter Valid First Name");
-		}
-
-		return result;
 	}
 	
 	/**
 	 * This Function checks and prints if the last name entered is valid or not
 	 * @param lastName This parameter takes the string input from the user 
-	 * @throws UserRegistrationException 
 	 */
 	
-	public static boolean lastName(String lastName) throws UserRegistrationException {
+	public static void lastName() {
 
 		String lastNameRegex = "^[A-Z]{1}[a-z]{2,}";
-
-		Pattern pt = Pattern.compile(lastNameRegex);
-		Matcher mt = pt.matcher(lastName);
-
-		boolean result = mt.matches();
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the Last Name");
+		String lastName = sc.nextLine();
 		
-		if(result == false)
-		{
-			throw new UserRegistrationException("Please Enter Valid Last Name");
-		}
+		Predicate<String> lastNameFilter = Pattern.compile(lastNameRegex).asMatchPredicate();
+		System.out.println(lastNameFilter.test(lastName));
 		
-		return result;
 	}
 	
 	
 	/**
 	 * This Function checks and prints if the email entered is valid or not
 	 * @param email This parameter takes the string input from the user 
-	 * @throws UserRegistrationException 
 	 */
 	
-	public static boolean email(String email) throws UserRegistrationException {
+	public static void email() {
 
 		String emailRegex = "[a-z0-9]+(.[a-z0-9]+)@[a-z0-9]+.[a-z]*.[a-z]*$";
-		
-		Pattern pt = Pattern.compile(emailRegex);
-		Matcher mt = pt.matcher(email);
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the email");
+		String email = sc.nextLine();
 
-		boolean result = mt.matches();
-		
-		if(result == false)
-		{
-			throw new UserRegistrationException("Please Enter Valid E-mail");
-		}
-		
-		return result;
+		Predicate<String> emailFilter = Pattern.compile(emailRegex).asMatchPredicate();
+		System.out.println(emailFilter.test(email));
 	}
 	
 	
 	/**
 	 * This Function checks and prints if the Mobile Number entered is valid or not
 	 * @param mobileNumber This parameter takes the string input from the user 
-	 * @throws UserRegistrationException 
 	 */
 	
-	public static boolean mobileNumber(String mobileNumber) throws UserRegistrationException {
+	public static void mobileNumber() {
 
 		String mobileNumberRegex = "^[0-9]{2}\s[0-9]{10}";
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the Mobile Number");
+		String mobileNumber = sc.nextLine();
 
-		Pattern pt = Pattern.compile(mobileNumberRegex);
-		Matcher mt = pt.matcher(mobileNumber);
+		Predicate<String> mobileNumberFilter = Pattern.compile(mobileNumberRegex).asMatchPredicate();
+		System.out.println(mobileNumberFilter.test(mobileNumber));
 
-		boolean result = mt.matches();
 		
-		if(result == false)
-		{
-			throw new UserRegistrationException("Please Enter Valid Mobile Number");
-		}
-		
-		return result;
 	}
 	
 	/**
@@ -112,24 +89,34 @@ public class UserRegistration {
 	 * The rule-3 for a valid password is it should have at least 1 numeric number
 	 * The rule-4 for a valid password is it should have at least 1 special character
 	 * @param password This parameter takes the string input from the user 
-	 * @throws UserRegistrationException 
 	 */
 	
-	public static boolean password(String password) throws UserRegistrationException {
+	public static void password() {
 
 		String passwordRegex = "((?=.*\\d)(?=.*[A-Z])(?=.*[$&+,:;=?@#|'<>.^*()%!-]).{8,})";
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the Password");
+		String password = sc.nextLine();
 
-		Pattern pt = Pattern.compile(passwordRegex);
-		Matcher mt = pt.matcher(password);
-
-		boolean result = mt.matches();
-		
-		if(result == false)
-		{
-			throw new UserRegistrationException("Please Enter Valid Password");
-		}
-		
-		return result;
+		Predicate<String> passwordFilter = Pattern.compile(passwordRegex).asMatchPredicate();
+		System.out.println(passwordFilter.test(password));
 	}
 
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+
+		System.out.println("Welcome to User Registration Program");
+		
+		firstName();
+		
+		lastName();
+		
+		email();
+		
+		mobileNumber();
+		
+		password();
+	}
 }
